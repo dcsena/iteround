@@ -61,9 +61,9 @@ def saferound(iterable, places, strategy=DIFFERENCE, rounder=round, topline=None
     assert isinstance(places, int)
     assert strategy in [SMALLEST, LARGEST, DIFFERENCE]
     values = iterable
-    if (isinstance(iterable, dict) or isinstance(iterable, OrderedDict)):
+    if isinstance(iterable, dict) or isinstance(iterable, OrderedDict):
         keys, values = zip(*iterable.items())
-    assert all([isinstance(x, float) for x in values])
+    assert all([isinstance(x, float) or instance(x, int) for x in values])
 
     # define a sorting method for rounded differences
     sorter = _sort_by_diff if strategy == DIFFERENCE else _sort_by_value
