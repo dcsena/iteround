@@ -97,6 +97,10 @@ class TestSafeRoundMethods(unittest.TestCase):
         actual_out = iteround.saferound([], 0, topline=topline)
         self.assertListEqual(actual_out, out)
 
+    def test_integers(self):
+        out = [4, 3.24, 3.23, 6.45, 5.35, 7.34]
+        self.assertListEqual(iteround.saferound(self.in_list, 2), out)
+
 
 if __name__ == '__main__':
     unittest.main()
